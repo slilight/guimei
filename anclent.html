@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹窗</title>
+    <script src="tool.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #canter{
+            width: 600px;
+            height: 800px;
+            border: 1px solid black;
+            overflow: hidden;
+        }
+        #top{
+            width: 600px;
+            height: 800px;
+            border: 1px solid brown;
+        }
+        #p{
+            width: 50px;
+            height: 45px;
+            background-color: coral;
+            color: white;
+            font-size: 18px;
+            position: absolute;
+            top: 90px;
+            left: 274px;
+        }
+        #bottom{
+            width: 600px;
+            height: 800px;
+            position: absolute;
+        }
+        #bottom-color{
+            height: 400px;
+            background-color: black;
+            opacity: 0.4;
+            border: 1px solid yellow;
+        }
+        #ball{
+            height: 400px;
+            border: 1px solid red;
+            position: relative;
+        }
+        #span{
+            position: absolute;
+            top: 1px;
+            left: 565px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="canter">
+    <div id="top">
+        <p id="p">点我</p>
+    </div>
+    <div id="bottom" style="top: 0">
+        <div id="bottom-color"></div>
+        <div id="ball">
+            <span id="span">X</span>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    window.onload=function(){
+        var cleck_p=getObj("p");
+        var cleck_span=getObj("span");
+        var bottom=getObj("bottom");
+        var bottom_color=getObj("bottom_color");
+        cleck_p.addEventListener("click",function(){
+            pop_ub();
+        });
+        cleck_span.addEventListener("click",function(){
+            retrieve();
+        });
+        bottom_color.addEventListener("click",function(){
+            retrieve();
+        });
+        function pop_ub(){
+            var top_value=parseInt(bottom.style.top);
+            if(top_value===0){
+                top_value=800;
+            }
+            else {
+                top_value +=50;
+            }
+            bottom.style.top=top_value+"px";
+        }
+    }
+</script>
+</html>
